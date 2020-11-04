@@ -71,7 +71,10 @@ triggerBeat = (event, id) => {
  * HINT: Log the keyCode of the key
  */
 document.addEventListener('keydown', triggerBeat);
-
+/* 
+* Button Click listener that loops all buttons based on mouse click event 
+* and calls triggerBeat
+*/
 document.querySelectorAll('.button').forEach((button)=>{
     button.addEventListener('click', (e)=>{
         triggerBeat(null, e.target.id);
