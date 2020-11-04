@@ -24,10 +24,10 @@ class Beat {
  * Button class that keeps track of the button color based on a press
  */
 class Button {
-    constructor(color, keyCode){
+    constructor(color, code){
        this.color = color;
-       this.keyCode = keyCode;
-       this.element = document.getElementById(keyCode);
+       this.code = code;
+       this.element = document.getElementById(code);
        this.setButtonColorInHTML();
        this.setATransitionEndListener();
     }

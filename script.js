@@ -55,15 +55,13 @@ let beats = {
 }
 
 /**
- * Function to play the beat upon a press of key
- * HINT: use the keyCode
+ * Function to play the beat upon a press of key or click the button
  */
-triggerBeat = (event) => {
-  const keyCode = event.keyCode;
-  if (keyCode in beats){
-     let keyPress = beats[keyCode];
-     keyPress.beat.play()
-     keyPress.button.select();
+triggerBeat = (event, id) => {
+  let code = event?.keyCode || id;
+  if (code in beats){
+     beats[code].button.select();
+     beats[code].beat.play();
   }
 
 }
@@ -72,5 +70,10 @@ triggerBeat = (event) => {
  * Keydown listener to fire triggerBeat function
  * HINT: Log the keyCode of the key
  */
-document.addEventListener('keydown', triggerBeat)
+document.addEventListener('keydown', triggerBeat);
 
+document.querySelectorAll('.button').forEach((button)=>{
+    button.addEventListener('click', (e)=>{
+        triggerBeat(null, e.target.id);
+    })
+})
