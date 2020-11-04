@@ -29,7 +29,21 @@ class Button {
        this.keyCode = keyCode;
        this.element = document.getElementById(keyCode);
        this.setButtonColorInHTML();
+       this.setATransitionEndListener();
     }
+ 
+    // Solution 1 : remove style on keyup
+    // Solution 2 : Wait a certain amount of time to remove
+    // Solution 3 : React on transitionend event
+
+    setATransitionEndListener = () => {
+        this.element.addEventListener('transitionend', () => {
+            this.deselect();
+            console.log("transition ended");
+        })
+
+    }
+
 
     /**
      * Set the button color based on color specified
@@ -50,5 +64,7 @@ class Button {
      * Deselect function to reset background color and boxShadow
      */
     deselect = () => {
+        this.element.style.backgroundColor = "transparent";
+        this.element.style.boxShadow = "none";
     }
 }
